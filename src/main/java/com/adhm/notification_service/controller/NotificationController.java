@@ -2,6 +2,7 @@ package com.adhm.notification_service.controller;
 
 import com.adhm.notification_service.model.Notification;
 import com.adhm.notification_service.service.NotificationService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,7 @@ public class NotificationController {
     private final NotificationService notificationService;
 
     @PostMapping
-    public ResponseEntity<Notification> send(@RequestBody Notification notification) {
+    public ResponseEntity<Notification> send(@Valid @RequestBody Notification notification) {
         return ResponseEntity.ok(notificationService.sendNotification(notification));
     }
 
